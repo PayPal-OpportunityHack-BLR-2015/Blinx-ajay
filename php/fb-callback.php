@@ -37,27 +37,20 @@ if (! isset($accessToken)) {
 }  
 
 // Logged in  
-echo '<h3>Access Token</h3>';  
-var_dump($accessToken->getValue());  
   
 // The OAuth 2.0 client handler helps us manage access tokens  
 $oAuth2Client = $fb->getOAuth2Client();  
 
 // Get the access token metadata from /debug_token  
 $tokenMetadata = $oAuth2Client->debugToken($accessToken);  
-echo '<h3>Metadata</h3>';  
-var_dump($tokenMetadata);  
-
-echo 'User Id is '.$tokenMetadata->getProperty("user_id");
-  
 
 $_SESSION['fb_access_token'] = (string) $accessToken;  
 
-echo '<h4>Retrieving access data</h4>';
+
 
 try {
   // Returns a `Facebook\FacebookResponse` object
-  $response = $fb->get('/me?fields=id,name,birthday,gender,location,verified,work', ($accessToken));
+  $response = $fb->get('/me?fields=id,name,birthday,gender,location,verified,work,first_name,last_name,email', ($accessToken));
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
   echo 'Graph returned an error: ' . $e->getMessage();
   exit;
@@ -67,14 +60,20 @@ try {
 }
 
 $user = $response->getGraphUser();
-var_dump($user);
+
 $_SESSION['form-first-name'] = $user->getFirstName();
 $_SESSION['form-last-name'] = $user->getLastName();
 $_SESSION['form-email'] = $user->getEmail();
 $_SESSION['form-password'] = 'FACEBOOK_API_'.$accessToken;
-var_dump($_SESSION);
+$_SESSION['form-id'] = $user->getId();
+$_SESSION['form-birthday'] = $user->getBirthDay();
+$_SESSION['form-gender'] = $user->getGender();
+$_SESSION['form-location'] = $user->getLocation();
+$_SESSION['form-verified'] = $user->getField('verified');
+$_SESSION['form-work'] = $user->getField('work');
 
+$url='location: ../form-1/detailreg-volunteer-test.php';
+header($url);
 
-
-
+die();?>
 
