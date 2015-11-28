@@ -35,12 +35,20 @@ session_start();
                                 <div class="form-group">
                                     <label class="sr-only" for="form-dob">Date of Birth</label>
                                     <input type="text" name="form-dob" placeholder="Date of Birth..."
-                                           class="form-password form-control" id="form-dob">
+                                           class="form-password form-control" id="form-dob" value="<?php 
+                                                        if(isset($_SESSION['form-birthday'])){
+                                                                print stripslashes($_SESSION['form-birthday']);
+                                                        }
+                                                        else{print '';} ?>">
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="form-gender">Gender</label>
                                     <input type="text" name="form-gender" placeholder="Gender..."
-                                           class="form-password form-control" id="form-gender">
+                                           class="form-password form-control" id="form-gender" value="<?php 
+                                                        if(isset($_SESSION['form-gender'])){
+                                                                print stripslashes($_SESSION['form-gender']);
+                                                        }
+                                                        else{print '';} ?>">
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="form-qual">Qualification</label>

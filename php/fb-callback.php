@@ -72,7 +72,7 @@ $_SESSION['form-location'] = $user->getLocation();
 $_SESSION['form-verified'] = $user->getField('verified');
 $_SESSION['form-work'] = $user->getField('work');
 
-$url='location: ../form-1/detailreg-volunteer-test.php';
+$url='location: detailreg-user.php';
 header($url);
 
 die();?>
