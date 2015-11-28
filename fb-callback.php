@@ -76,7 +76,7 @@ $_SESSION['form-id'] = $user->getId();
 $_SESSION['form-birthday'] = $user->getBirthDay();
 $_SESSION['form-gender'] = $user->getGender();
 $_SESSION['form-location'] = $user->getLocation();
-$_SESSION['form-verified'] = $user->getVerified();
+$_SESSION['form-verified'] = $user->getField('verified');
 $_SESSION['form-work'] = $user->getWork();
 var_dump($_SESSION);
 
