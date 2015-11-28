@@ -70,10 +70,19 @@ session_start();
                                     <input type="text" name="form-add" placeholder="Address..."
                                            class="form-password form-control" id="form-add">
                                 </div>
+                                 <div class="form-group">
+                                        <label class="sr-only" for="form-geo">Geo Location</label>
+                                        <input type="text" name="form-geo" placeholder="Geo Location..." class="form-password form-control typeahead tt-query" id="form-geo">
+                                    </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="form-state">State</label>
                                     <input type="text" name="form-state" placeholder="State..."
                                            class="form-password form-control typeahead tt-query" id="form-state">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-dist">District</label>
+                                    <input type="text" name="form-dist" placeholder="District..."
+                                           class="form-password form-control" id="form-dist">
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="form-pic">Profile Picture</label>
@@ -118,4 +127,32 @@ echo $templates->render('bootstrap-template', ['title' => 'Blinx - Home']);
             local: ['Andaman and Nicobar Islands', 'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chandigarh', 'Chhattisgarh', 'Dadra and Nagar Haveli', 'Daman and Diu', 'Delhi', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jammu and Kashmir', 'Jharkhand', 'Karnataka', 'Kerala', 'Lakshadweep', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Orissa', 'Pondicherry', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Tripura', 'Uttaranchal', 'Uttar Pradesh', 'West Bengal']
         });
     });
+</script>
+<script>
+            var latitude='';
+            var longitude='';
+           function initialize()
+	   {
+
+               var input = document.getElementById('form-geo');
+                var options = {componentRestrictions: {country: 'in'}};
+                var autocomplete=new google.maps.places.Autocomplete(input, options);
+
+            google.maps.event.addListener(autocomplete,'place_changed', function()
+            {
+                    var inputA = document.getElementById('form-geo').value;
+                 var geocoder = new google.maps.Geocoder();
+                        geocoder.geocode({
+                        'address': inputA
+                        }, function(results, status) {
+
+                            if (status === google.maps.GeocoderStatus.OK)
+                            {
+                                latitude=results[0].geometry.location.lat();
+                                longitude=results[0].geometry.location.lng();
+
+                            }
+                        });
+            });
+           };
 </script>
