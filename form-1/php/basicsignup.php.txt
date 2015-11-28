@@ -1,9 +1,0 @@
-<?php
-
-session_start();
-
-$_SESSION['form-first-name'] = $firstName;
-$_SESSION['form-last-name'] = $lastName;
-$_SESSION['form-first-name'] = $firstName;
-$_SESSION['form-first-name'] = $firstName;
-?>
