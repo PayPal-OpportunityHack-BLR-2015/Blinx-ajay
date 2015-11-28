@@ -1,4 +1,18 @@
 <!DOCTYPE html>
+<?php
+
+    $document_root = $_SERVER['DOCUMENT_ROOT'];
+    $file_name = dirname(__FILE__);
+    $whatIWant = substr($file_name ,  strlen($document_root)+1);    
+    $app_name = substr($whatIWant, 0, strpos($whatIWant, '/'));    
+    if($app_name != '')
+    {
+        $app_name = "/" . "$app_name"  ; 
+    }
+    
+
+?>
+
 <html lang="en">
 
 <head>
@@ -10,10 +24,10 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/assets/site/css/form-elements.css">
-    <link rel="stylesheet" href="/assets/site/css/style.css">
+    <link rel="stylesheet" href="<?php echo $app_name.'/assets/bootstrap/css/bootstrap.min.css'?>">
+    <link rel="stylesheet" href="<?php echo $app_name.'/assets/font-awesome/css/font-awesome.min.css'?>">
+    <link rel="stylesheet" href="<?php echo $app_name.'/assets/site/css/form-elements.css'?>">
+    <link rel="stylesheet" href="<?php echo $app_name.'/assets/site/css/style.css'?>">
     <!--link rel="stylesheet" href="/assets/site/css/bootstrap-accessibility.css"-->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -54,13 +68,13 @@
 </footer>
 
 <!-- Javascript -->
-<script src="/assets/site/js/jquery-1.11.1.min.js"></script>
-<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="/assets/site/js/jquery.backstretch.js"></script>
-<script src="/assets/site/js/scripts.js"></script>
+<script src="<?php echo $app_name.'/assets/site/js/jquery-1.11.1.min.js'?>"></script>
+<script src="<?php echo $app_name.'/assets/bootstrap/js/bootstrap.min.js'?>"></script>
+<script src="<?php echo $app_name.'/assets/site/js/jquery.backstretch.js'?>"></script>
+<script src="<?php echo $app_name.'/assets/site/js/scripts.js'?>"></script>
 
 <!--[if lt IE 10]>
-<script src="/assets/site/js/placeholder.js"></script>
+<script src="<?php echo $app_name.'/assets/site/js/placeholder.js'?>"></script>
 <![endif]-->
 
 </body>
