@@ -50,6 +50,13 @@
             $permissions = ['email','public_profile']; // Optional permissions
             $loginUrl = $helper->getLoginUrl('http://localhost:8888/fb-callback.php', $permissions);
 
+
+            $client = new Google_Client();
+            $client->setAuthConfigFile('client_secrets.json');
+            $client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/Blinx/oauth2callback.php');
+            $client->addScope(Google_Service_Drive::DRIVE_METADATA_READONLY);
+            $google_auth_url = $client->createAuthUrl();
+
         ?>
         <!-- Top content -->
         <div class="top-content">
@@ -160,7 +167,7 @@
                                         <a class="btn btn-link-1 btn-link-1-twitter" href="#">
                                             <i class="fa fa-twitter"></i> Twitter
                                         </a>
-                                        <a class="btn btn-link-1 btn-link-1-google-plus" href="#">
+                                        <a class="btn btn-link-1 btn-link-1-google-plus" href=<?= $google_auth_url?>
                                             <i class="fa fa-google-plus"></i> Google Plus
                                         </a>
                                     </div>
