@@ -14,7 +14,7 @@ $fb = new Facebook\Facebook([
 $helper = $fb->getRedirectLoginHelper();
 
 $permissions = ['email','public_profile']; // Optional permissions
-$loginUrl = $helper->getLoginUrl('http://localhost:8888/fb-callback.php', $permissions);
+$loginUrl = $helper->getLoginUrl('http://localhost:8888/blinx/php/fb-callback.php', $permissions);
 
 $client = new Google_Client();
 $client->setAuthConfigFile('private/client_secrets.json');
