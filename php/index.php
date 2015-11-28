@@ -136,7 +136,7 @@ $google_auth_url = $client->createAuthUrl();
                             <h3>...or Sign Up with:</h3>
 
                             <div class="social-login-buttons">
-                                <a class="btn btn-link-1 btn-link-1-facebook" href="#">
+                                <a class="btn btn-link-1 btn-link-1-facebook" href=<?= $loginUrl ?>
                                     <i class="fa fa-facebook"></i> Facebook
                                 </a>
                                 <a class="btn btn-link-1 btn-link-1-twitter" href="#">
