@@ -48,12 +48,12 @@
             $helper = $fb->getRedirectLoginHelper();
 
             $permissions = ['email','public_profile']; // Optional permissions
-            $loginUrl = $helper->getLoginUrl('http://localhost:8888/fb-callback.php', $permissions);
+            $loginUrl = $helper->getLoginUrl('http://localhost:8888/Blinx/php/fb-callback.php', $permissions);
 
 
             $client = new Google_Client();
             $client->setAuthConfigFile('client_secrets.json');
-            $client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/Blinx/oauth2callback.php');
+            $client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/Blinx/php/google-callback.php');
             $client->addScope(Google_Service_Drive::DRIVE_METADATA_READONLY);
             $google_auth_url = $client->createAuthUrl();
 
