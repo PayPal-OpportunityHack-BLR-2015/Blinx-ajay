@@ -1,154 +1,151 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+session_start();
 
-    <head>
+$templates = new League\Plates\Engine('templates/site');
+echo $templates->render('bootstrap-template', ['title' => 'Blinx - Home']);
 
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>BLINX</title>
+$fb = new Facebook\Facebook([
+    'app_id' => '427329234142944',
+    'app_secret' => '71ecf083975587c1e511762d6f2001ea',
+    'default_graph_version' => 'v2.4',
+]);
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-        <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="/assets/site/css/form-elements.css">
-        <link rel="stylesheet" href="/assets/site/css/style.css">
-        <!--link rel="stylesheet" href="/assets/site/css/bootstrap-accessibility.css"-->
+$helper = $fb->getRedirectLoginHelper();
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+$permissions = ['email','public_profile']; // Optional permissions
+$loginUrl = $helper->getLoginUrl('http://localhost:8888/fb-callback.php', $permissions);
 
-      <!--  &lt;!&ndash; Favicon and touch icons &ndash;&gt;
-        <link rel="shortcut icon" href="/assets/ico/favicon.png">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">-->
+$client = new Google_Client();
+$client->setAuthConfigFile('private/client_secrets.json');
+$client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/Blinx/oauth2callback.php');
+$client->addScope(Google_Service_Drive::DRIVE_METADATA_READONLY);
+$google_auth_url = $client->createAuthUrl();
 
-    </head>
+?>
 
-    <body>
+<div class="content">
+    <div class="inner-bg">
+        <div class="container">
 
-        <!-- Top content -->
-        <div class="top-content">
+            <!-- <div class="row">-->
+            <div class="col-sm-8 col-sm-offset-2 text">
+                <h1><strong>BLINX</strong></h1>
 
-            <div class="inner-bg">
-                <div class="container">
+                <div class="description">
+                    <p>
+                        <strong>"Donate Your Eyes While You Are Alive"</strong>
+                    </p>
+                </div>
+            </div>
+            <!-- </div>-->
 
-                   <!-- <div class="row">-->
-                        <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>BLINX</strong></h1>
-                            <div class="description">
-                            	<p>
-	                            	<strong>"Donate Your Eyes While You Are Alive"</strong>
-                            	</p>
+            <div class="row">
+                <div class="col-sm-5">
+
+                    <div class="form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>Login to our site</h3>
+
+                                <p>Enter username and password to log on:</p>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="fa fa-key"></i>
                             </div>
                         </div>
-                   <!-- </div>-->
-
-                    <div class="row">
-                        <div class="col-sm-5">
-
-                        	<div class="form-box">
-	                        	<div class="form-top">
-	                        		<div class="form-top-left">
-	                        			<h3>Login to our site</h3>
-	                            		<p>Enter username and password to log on:</p>
-	                        		</div>
-	                        		<div class="form-top-right">
-	                        			<i class="fa fa-key"></i>
-	                        		</div>
-	                            </div>
-	                            <div class="form-bottom">
-				                    <form role="form" action="" method="post" class="login-form" action="php/signin.php">
-				                    	<div class="form-group">
-				                    		<label class="sr-only" for="form-username">Username</label>
-				                        	<input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
-				                        </div>
-				                        <div class="form-group">
-				                        	<label class="sr-only" for="form-password">Password</label>
-				                        	<input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
-				                        </div>
-				                        <button type="submit" class="btn">Sign in!</button>
-				                    </form>
-			                    </div>
-		                    </div>
+                        <div class="form-bottom">
+                            <form role="form" action="" method="post" class="login-form" action="php/signin.php">
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-username">Username</label>
+                                    <input type="text" name="form-username" placeholder="Username..."
+                                           class="form-username form-control" id="form-username">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-password">Password</label>
+                                    <input type="password" name="form-password" placeholder="Password..."
+                                           class="form-password form-control" id="form-password">
+                                </div>
+                                <button type="submit" class="btn">Sign in!</button>
+                            </form>
+                        </div>
+                    </div>
 
 
+                </div>
 
+                <div class="col-sm-1 middle-border"></div>
+                <div class="col-sm-1"></div>
+
+                <div class="col-sm-5">
+
+                    <div class="form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>Sign up now</h3>
+
+                                <p>Fill in the form below to get instant access:</p>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="fa fa-pencil"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            <table style="width:100%">
+                                <tr>
+                                    <td width="30%">
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio">Volunteer</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio">User</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <form role="form" action="" method="post" class="registration-form"
+                                  action="php/basicsignup.php">
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-first-name">First name</label>
+                                    <input type="text" name="form-first-name" placeholder="First name..."
+                                           class="form-first-name form-control" id="form-first-name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-last-name">Last name</label>
+                                    <input type="text" name="form-last-name" placeholder="Last name..."
+                                           class="form-last-name form-control" id="form-last-name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-email">Email</label>
+                                    <input type="text" name="form-email" placeholder="Email..."
+                                           class="form-email form-control" id="form-email">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-password">Password</label>
+                                    <input type="text" name="form-password" placeholder="Password..."
+                                           class="form-password form-control" id="form-new-password">
+                                </div>
+                                <button type="submit" class="btn">Sign me up!</button>
+                            </form>
                         </div>
 
-                        <div class="col-sm-1 middle-border"></div>
-                        <div class="col-sm-1"></div>
+                        <div class="social-login">
+                            <h3>...or Sign Up with:</h3>
 
-                        <div class="col-sm-5">
-
-                        	<div class="form-box">
-                        		<div class="form-top">
-	                        		<div class="form-top-left">
-	                        			<h3>Sign up now</h3>
-	                            		<p>Fill in the form below to get instant access:</p>
-	                        		</div>
-	                        		<div class="form-top-right">
-	                        			<i class="fa fa-pencil"></i>
-	                        		</div>
-	                            </div>
-	                            <div class="form-bottom">
-                                    <table style="width:100%">
-                                        <tr>
-                                            <td width="30%"> <div class="radio">
-                                                <label><input type="radio" name="optradio">Volunteer</label>
-                                            </div>
-                                            </td>
-                                            <td><div class="radio">
-                                                <label><input type="radio" name="optradio">User</label>
-                                            </div>
-                                            </td>
-                                        </tr>
-                                     </table>
-
-				                    <form role="form" action="" method="post" class="registration-form" action="php/basicsignup.php">
-				                    	<div class="form-group">
-				                    		<label class="sr-only" for="form-first-name">First name</label>
-				                        	<input type="text" name="form-first-name" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
-				                        </div>
-				                        <div class="form-group">
-				                        	<label class="sr-only" for="form-last-name">Last name</label>
-				                        	<input type="text" name="form-last-name" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
-				                        </div>
-				                        <div class="form-group">
-				                        	<label class="sr-only" for="form-email">Email</label>
-				                        	<input type="text" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email">
-				                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-password">Password</label>
-                                            <input type="text" name="form-password" placeholder="Password..." class="form-password form-control" id="form-new-password">
-                                        </div>
-				                        <button type="submit" class="btn">Sign me up!</button>
-				                    </form>
-			                    </div>
-
-                                <div class="social-login">
-                                    <h3>...or Sign Up with:</h3>
-                                    <div class="social-login-buttons">
-                                        <a class="btn btn-link-1 btn-link-1-facebook" href="#">
-                                            <i class="fa fa-facebook"></i> Facebook
-                                        </a>
-                                        <a class="btn btn-link-1 btn-link-1-twitter" href="#">
-                                            <i class="fa fa-twitter"></i> Twitter
-                                        </a>
-                                        <a class="btn btn-link-1 btn-link-1-google-plus" href="#">
-                                            <i class="fa fa-google-plus"></i> Google Plus
-                                        </a>
-                                    </div>
-                                </div>
-                        	</div>
-
+                            <div class="social-login-buttons">
+                                <a class="btn btn-link-1 btn-link-1-facebook" href="#">
+                                    <i class="fa fa-facebook"></i> Facebook
+                                </a>
+                                <a class="btn btn-link-1 btn-link-1-twitter" href="#">
+                                    <i class="fa fa-twitter"></i> Twitter
+                                </a>
+                                <a class="btn btn-link-1 btn-link-1-google-plus" href="#">
+                                    <i class="fa fa-google-plus"></i> Google Plus
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -156,31 +153,5 @@
             </div>
 
         </div>
-
-        <!-- Footer -->
-        <footer>
-        	<div class="container">
-        		<div class="row">
-
-        			<div class="col-sm-8 col-sm-offset-2">
-        				<div class="footer-border"></div>
-        				<p>Contact Us</i></p>
-        			</div>
-
-        		</div>
-        	</div>
-        </footer>
-
-        <!-- Javascript -->
-        <script src="/assets/site/js/jquery-1.11.1.min.js"></script>
-        <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/assets/site/js/jquery.backstretch.js"></script>
-        <script src="/assets/site/js/scripts.js"></script>
-
-        <!--[if lt IE 10]>
-            <script src="/assets/site/js/placeholder.js"></script>
-        <![endif]-->
-
-    </body>
-
-</html>
+    </div>
+</div>
