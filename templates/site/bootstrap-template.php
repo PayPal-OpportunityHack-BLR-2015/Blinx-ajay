@@ -76,7 +76,11 @@
 <!--[if lt IE 10]>
 <script src="<?php echo $app_name.'/assets/site/js/placeholder.js'?>"></script>
 <![endif]-->
-
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        $.backstretch("<?php echo $app_name.'/assets/site/img/backgrounds/1.jpg'?>");
+    });
+</script>
 </body>
 
 </html>
