@@ -142,7 +142,7 @@ $google_auth_url = $client->createAuthUrl();
                                 <a class="btn btn-link-1 btn-link-1-twitter" href="#">
                                     <i class="fa fa-twitter"></i> Twitter
                                 </a>
-                                <a class="btn btn-link-1 btn-link-1-google-plus" href="#">
+                                <a class="btn btn-link-1 btn-link-1-google-plus" href=?= $google_auth_url?>
                                     <i class="fa fa-google-plus"></i> Google Plus
                                 </a>
                             </div>
