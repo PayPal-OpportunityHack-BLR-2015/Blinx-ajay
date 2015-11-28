@@ -84,22 +84,20 @@ session_start();
                                     <input type="text" name="form-dist" placeholder="District..."
                                            class="form-password form-control" id="form-dist">
                                 </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="form-pic">Profile Picture</label>
-                                    <input type="text" name="form-add" readonly placeholder="Profile Pic"
-                                           class="form-password form-control " id="form-pic">
-                                    <span class="btn btn-default btn-file ">
-                                        Browse <input type="file">
-                                    </span>
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="form-doc">Document Proof</label>
-                                    <input type="text" name="form-doc" readonly placeholder="Document Proof"
-                                           class="form-password form-control" id="form-doc">
-                                      <span class="btn btn-default btn-file">
-                                        Browse <input type="file">
-                                    </span>
-                                </div>
+                               <div class="form-group">
+                                   <label class="sr-only" for="form-pic">Profile Picture</label>
+                                       <h4>Profile Picture</h4>
+                                   <span class="btn btn-default btn-file ">
+                                       Browse <input type="file" id="profile-file">
+                                   </span>
+                               </div>
+                               <div class="form-group">
+                                   <label class="sr-only" for="form-pic">Document Proof</label>
+                                       <h4>Document Proof</h4>
+                                     <span class="btn btn-default btn-file">
+                                       Browse <input type="file" id="doc-file">
+                                   </span>
+                               </div>
                                 <button type="submit" class="btn">Submit</button>
                             </form>
                         </div>
