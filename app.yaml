@@ -1,5 +1,5 @@
-application: blinx
-version: 1
+application: blinx-1143
+version: 2
 runtime: php55
 api_version: 1
 threadsafe: yes
@@ -12,8 +12,20 @@ handlers:
 - url: /assets
   static_dir: assets
 
+- url: /fb-callback.php
+  script: php/fb-callback.php
+
+- url: /google-callback.php
+  script: php/google-callback.php
+
 - url: /user-registration
   script: php/detailreg-user.php
 
 - url: .*
   script: php/index.php
+
+# Skip non deployable files.
+skip_files:
+- dbscripts/
+- form-1/
+- README.md
