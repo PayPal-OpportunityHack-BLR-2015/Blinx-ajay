@@ -12,5 +12,8 @@ handlers:
 - url: /assets
   static_dir: assets
 
+- url: /user-registration
+  script: php/detailreg-user.php
+
 - url: .*
   script: php/index.php
