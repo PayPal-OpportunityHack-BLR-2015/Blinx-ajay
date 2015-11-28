@@ -1,0 +1,6 @@
+# Intellij Project Files
+.idea/
+*.iml
+
+# System Files
+.DS_Store
