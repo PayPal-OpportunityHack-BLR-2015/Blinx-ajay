@@ -2,9 +2,6 @@
 require_once __DIR__ . '/vendor/autoload.php';
 session_start();
 
-$templates = new League\Plates\Engine('templates/site');
-echo $templates->render('bootstrap-template', ['title' => 'Blinx - Home']);
-
 $fb = new Facebook\Facebook([
     'app_id' => '427329234142944',
     'app_secret' => '71ecf083975587c1e511762d6f2001ea',
@@ -155,3 +152,8 @@ $google_auth_url = $client->createAuthUrl();
         </div>
     </div>
 </div>
+
+<?php
+$templates = new League\Plates\Engine('templates/site');
+echo $templates->render('bootstrap-template', ['title' => 'Blinx - Home']);
+?>
