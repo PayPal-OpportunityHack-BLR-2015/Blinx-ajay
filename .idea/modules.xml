@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Blinx.iml" filepath="$PROJECT_DIR$/Blinx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bootstrap-login-register-forms.iml" filepath="$PROJECT_DIR$/bootstrap-login-register-forms.iml" />
+    </modules>
+  </component>
+</project>
