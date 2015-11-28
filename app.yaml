@@ -13,16 +13,16 @@ handlers:
   static_dir: assets
 
 - url: /fb-callback.php
-  script: php/fb-callback.php
+  script: fb-callback.php
 
 - url: /google-callback.php
-  script: php/google-callback.php
+  script: google-callback.php
 
 - url: /user-registration
-  script: php/detailreg-user.php
+  script: detailreg-user.php
 
 - url: .*
-  script: php/index.php
+  script: index.php
 
 # Skip non deployable files.
 skip_files:
