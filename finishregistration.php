@@ -56,18 +56,25 @@ $sqlQuery = "INSERT INTO `m_user`(`user_id`,`first_name`,`last_name`,`email_id`,
 	('$userId','$firstName','$lastName','$mailId','$mobile_number',
 	$alternative_mobile_number,'$dob','$gender','$qualification','$institution','$occupation','$state','$district','$location','$address','$target_dir','$target_dir_profile','$curDate',
 	'$curDate','C',0,0,'1','$passwordToStore')";
-// echo $sqlQuery;
-mysqli_query($conn,$sqlQuery);
 
 /* commit transaction */
-if (!$mysqli_query->commit()) {
-    print("Transaction commit failed\n");
-    exit();
-}
+// try {
+
+// echo $sqlQuery;
+    $sqlQuery = $sqlQuery+"";
+
+mysqli_query($conn,$sqlQuery);
+// if (!$mysqli_query->commit()) {
+//     print("Transaction commit failed\n");
+//     exit();
+// }
+// } catch (Exception $e) {
+//     echo 'Caught exception: ',  $e->getMessage(), "\n";
+// }
+
+
 
 $_SESSION['user'] =  $mailId;
 header("Location: form-1/profile.php");
 die();
 ?>
-
-
