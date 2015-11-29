@@ -34,22 +34,26 @@ else{
  // var_dump($row);
  if(strcmp($row['pwd'], $upass) == 0)
  {
+ 	$_SESSION['loginFailed'] = 'false';
  	$_SESSION['user'] = $userName;
  	if($row['verified']==1)
  {
     header("Location: ../profile.php");
+    die();
  }
  else{
     header("Location: ../unverified.html");
+    die();
 }
  }
 
- else
+else
  {
-  ?>
-        <script>alert('wrong details');</script>
-        <?php
+  	$_SESSION['loginFailed'] = 'true';
+  	header("Location: ../../index.php");
+  	die();
  }
+
  }
 }
 ?>

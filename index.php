@@ -30,6 +30,14 @@ else{
 }
 ?>
 
+<?php
+session_start();
+    if(isset($_SESSION['loginFailed']) && $_SESSION['loginFailed'] == 'true'){
+        $message = "Wrong Login Creds. PLease Re-enter.";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+}
+?>
+
 <div class="content">
     <div class="inner-bg">
         <div class="container">
