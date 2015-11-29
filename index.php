@@ -2,23 +2,31 @@
 require_once __DIR__ . '/vendor/autoload.php';
 session_start();
 
-$fb = new Facebook\Facebook([
-    'app_id' => '427329234142944',
-    'app_secret' => '71ecf083975587c1e511762d6f2001ea',
-    'default_graph_version' => 'v2.4',
-]);
+//echo 'Hello World, '.$_SESSION['fb_access_token'];
 
-$helper = $fb->getRedirectLoginHelper();
+if(is_null($_SESSION['fb_access_token'])){
 
-$permissions = ['email','public_profile']; // Optional permissions
-$loginUrl = $helper->getLoginUrl('http://localhost:8888/blinx/php/fb-callback.php', $permissions);
+        $fb = new Facebook\Facebook([
+            'app_id' => '427329234142944',
+            'app_secret' => '71ecf083975587c1e511762d6f2001ea',
+            'default_graph_version' => 'v2.4',
+        ]);
 
-$client = new Google_Client();
-$client->setAuthConfigFile('private/client_secrets.json');
-$client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/Blinx/oauth2callback.php');
-$client->addScope(Google_Service_Drive::DRIVE_METADATA_READONLY);
-$google_auth_url = $client->createAuthUrl();
+        $helper = $fb->getRedirectLoginHelper();
 
+        $permissions = ['email','public_profile']; // Optional permissions
+        $loginUrl = $helper->getLoginUrl('http://localhost:8888/blinx/fb-callback.php', $permissions);
+
+        $client = new Google_Client();
+        $client->setAuthConfigFile('private/client_secrets.json');
+        $client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/Blinx/oauth2callback.php');
+        $client->addScope(Google_Service_Drive::DRIVE_METADATA_READONLY);
+        $google_auth_url = $client->createAuthUrl();
+}
+else{
+    $url='location: success.php';
+    header($url);
+}
 ?>
 
 <div class="content">
@@ -63,7 +71,18 @@ $google_auth_url = $client->createAuthUrl();
                                     <input type="password" name="form-password" placeholder="Password..."
                                            class="form-password form-control" id="form-password">
                                 </div>
-                                <button type="submit" class="btn">Sign in!</button>
+                                <button type="submit" class="btn">Login in!</button>
+                                 <div class="social-login-buttons">
+                                <a class="btn btn-link-1 btn-link-1-facebook" href=<?= $loginUrl ?>
+                                    <i class="fa fa-facebook"></i> Facebook
+                                </a>
+                                <a class="btn btn-link-1 btn-link-1-twitter" href="#">
+                                    <i class="fa fa-twitter"></i> Twitter
+                                </a>
+                                <a class="btn btn-link-1 btn-link-1-google-plus" href=?= $google_auth_url?>
+                                    <i class="fa fa-google-plus"></i> Google+
+                                </a>
+                            </div>
                             </form>
                         </div>
                     </div>

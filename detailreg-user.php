@@ -16,11 +16,14 @@ session_start();
                     <div class="form-box">
                         <div class="form-top">
                             <div class="form-top-left">
-                                <h3>We need few more details</h3>
+                                <h3>Welcome, <?php if(isset($_SESSION['form-first-name'])){
+                                  print stripslashes($_SESSION['form-first-name']);
+                                }
+                                ?> We need few more details</h3>
                             </div>
                         </div>
                         <div class="form-bottom">
-                            <form role="form" action="" method="post" class="login-form"
+                            <form role="form" method="post" class="login-form"
                                   action="php/finishregistration.php">
                                 <div class="form-group">
                                     <label class="sr-only" for="form-mobile-number">Mobile Number</label>
@@ -95,7 +98,7 @@ session_start();
                                    <label class="sr-only" for="form-pic">Document Proof</label>
                                        <h4>Document Proof</h4>
                                      <span class="btn btn-default btn-file">
-                                       Browse <input type="file" id="doc-file">
+                                       Browse <input type="file" id="fileToUpload" name="fileToUpload">
                                    </span>
                                </div>
                                 <button type="submit" class="btn">Submit</button>
@@ -130,12 +133,10 @@ echo $templates->render('bootstrap-template', ['title' => 'Blinx - Home']);
             var latitude='';
             var longitude='';
            function initialize()
-	   {
-
+     {
                var input = document.getElementById('form-geo');
                 var options = {componentRestrictions: {country: 'in'}};
                 var autocomplete=new google.maps.places.Autocomplete(input, options);
-
             google.maps.event.addListener(autocomplete,'place_changed', function()
             {
                     var inputA = document.getElementById('form-geo').value;
@@ -143,12 +144,10 @@ echo $templates->render('bootstrap-template', ['title' => 'Blinx - Home']);
                         geocoder.geocode({
                         'address': inputA
                         }, function(results, status) {
-
                             if (status === google.maps.GeocoderStatus.OK)
                             {
                                 latitude=results[0].geometry.location.lat();
                                 longitude=results[0].geometry.location.lng();
-
                             }
                         });
             });
