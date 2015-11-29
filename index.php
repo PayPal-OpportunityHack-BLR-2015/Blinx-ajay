@@ -52,7 +52,7 @@ $google_auth_url = $client->createAuthUrl();
                             </div>
                         </div>
                         <div class="form-bottom">
-                            <form role="form" action="" method="post" class="login-form" action="php/signin.php">
+                            <form role="form" method="post" class="login-form" action="form-1/php/signin.php">
                                 <div class="form-group">
                                     <label class="sr-only" for="form-username">Username</label>
                                     <input type="text" name="form-username" placeholder="Username..."
