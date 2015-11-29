@@ -42,6 +42,32 @@
 </head>
 <body onLoad="initialize()">
 
+<?php
+        session_start();
+        include_once 'php/dbconnect.php';
+         // var_dump($_POST);
+        //$_Zero=0;
+        $query ="SELECT * FROM m_user WHERE verified= 0";
+        //echo $query;    
+
+
+$results=mysqli_query($conn, $query);
+$row_count=mysql_num_rows($results);
+$row_users = mysql_fetch_array($results);
+
+echo "<table>";
+
+while ($row_users = mysql_fetch_array($results)) {
+    //output a row here
+    echo "<tr><td>".($row_users['email_id'])."</td></tr>";
+}
+
+echo "</table>";
+
+
+       
+    ?>
+
 <!-- Top content -->
 <div class="top-content">
 

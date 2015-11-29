@@ -13,6 +13,11 @@ if(isset($_POST['form-username']))
  $userName = mysql_real_escape_string($_POST["form-username"]);
  $upass = mysql_real_escape_string($_POST["form-password"]);
 
+if ($userName == 'moderator' && $upass =='moderator'){
+ 	header("Location: ../moderator-approve.php");
+ }
+else{
+
  // var_dump($_POST);
  $query ="SELECT * FROM m_user WHERE email_id='".$userName."'";
  // echo $query;
@@ -45,6 +50,6 @@ if(isset($_POST['form-username']))
         <script>alert('wrong details');</script>
         <?php
  }
- 
+ }
 }
 ?>
