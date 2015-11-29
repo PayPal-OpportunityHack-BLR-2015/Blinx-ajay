@@ -7,15 +7,15 @@ include_once 'dbconnect.php';
  header("Location: home.php");
 }*/
 
-if(isset($_POST['btn_signin']))
+if(isset($_POST['form-username']))
 {
+
  $userName = mysql_real_escape_string($_POST['form-username']);
  $upass = mysql_real_escape_string($_POST['form-password']);
 
- $query = "SELECT * FROM m_user WHERE email_id='$userName'";
- echo $query;
- $res=mysql_query($query);
- echo $res;
+ echo $userName;
+
+ $res=mysqli_query($conn, "SELECT * FROM m_users WHERE email_id=$userName");
  $row=mysql_fetch_array($res);
  echo $row;
  if(strcmp($row['pwd'], $upass) == 0)
@@ -30,7 +30,12 @@ if(isset($_POST['btn_signin']))
 }
  }
 
+ else
+ {
+  ?>
+        <script>alert('wrong details');</script>
+        <?php
+ }
  
 }
 ?>
-

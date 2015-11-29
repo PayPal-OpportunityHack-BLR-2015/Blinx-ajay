@@ -122,7 +122,7 @@ else{
                                 </tr>
                             </table>
 
-                            <form role="form" action="" method="post" class="registration-form"
+                            <form role="form"  method="post" class="registration-form"
                                   action="php/basicsignup.php">
                                 <div class="form-group">
                                     <label class="sr-only" for="form-first-name">First name</label>
@@ -144,7 +144,7 @@ else{
                                     <input type="text" name="form-password" placeholder="Password..."
                                            class="form-password form-control" id="form-new-password">
                                 </div>
-                                <button type="submit" class="btn">Sign me up!</button>
+                                <button type="submit" class="btn_signin" name="btn_signin">Sign me up!</button>
                             </form>
                         </div>
 
