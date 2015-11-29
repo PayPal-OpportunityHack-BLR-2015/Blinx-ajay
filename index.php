@@ -80,7 +80,7 @@ else{
                                 <a class="btn btn-link-1 btn-link-1-twitter" href="#">
                                     <i class="fa fa-twitter"></i> Twitter
                                 </a>
-                                <a class="btn btn-link-1 btn-link-1-google-plus" href=<?= $google_auth_url?>
+                                <a class="btn btn-link-1 btn-link-1-google-plus" href=<?= $google_auth_url ?>
                                     <i class="fa fa-google-plus"></i> Google+
                                 </a>
                             </div>
@@ -147,7 +147,7 @@ else{
                                 </div>
                                 <button type="submit" class="btn_signin" name="btn_signin">Sign me up!</button>
                             </form>
-                        </div>
+                        
 
                         <div class="social-login">
                             <h3>...or Sign Up with:</h3>
@@ -165,7 +165,7 @@ else{
                             </div>
                         </div>
                     </div>
-
+</div>
                 </div>
             </div>
 

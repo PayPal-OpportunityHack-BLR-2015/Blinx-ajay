@@ -31,9 +31,9 @@ session_start();
                                            class="form-mobile-number form-control" id="form-mobile-number">
                                 </div>
                                 <div class="form-group">
-                                    <label class="sr-only" for="form-password">Alternative Mobile Number</label>
-                                    <input type="text" name="form-password" placeholder="Alternative Mobile Number..."
-                                           class="form-password form-control" id="form-password">
+                                    <label class="sr-only" for="form-alternate-mobile">Alternative Mobile Number</label>
+                                    <input type="text" name="form-alternate-mobile" placeholder="Alternative Mobile Number..."
+                                           class="form-password form-control" id="form-alternate-mobile">
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="form-dob">Date of Birth</label>
@@ -91,7 +91,7 @@ session_start();
                                    <label class="sr-only" for="form-pic">Profile Picture</label>
                                        <h4>Profile Picture</h4>
                                    <span class="btn btn-default btn-file ">
-                                       Browse <input type="file" id="profile-file">
+                                       Browse <input type="file" id="profilepic" name="profilePic">
                                    </span>
                                </div>
                                <div class="form-group">
