@@ -29,7 +29,9 @@ $curDate = date("D M d Y G:i");
 
 
 var_dump($_FILES);
-$target_dir_profile = "/Applications/MAMP/htdocs/Blinx/upload/Profile".uniqid();
+$extension = split("/", $_FILES['profilePic']['type'])[1];
+
+$target_dir_profile = "/Applications/MAMP/htdocs/Blinx/upload/Profile".uniqid().".".$extension;
 
 if(move_uploaded_file($_FILES['profilePic']['tmp_name'], $target_dir_profile)){
 	    print "Received {$_FILES['profilePic']['name']} - its size is {$_FILES['profilePic']['size']}";
@@ -37,8 +39,8 @@ if(move_uploaded_file($_FILES['profilePic']['tmp_name'], $target_dir_profile)){
         print "Upload failed!";
     }
 
-
-$target_dir = "/Applications/MAMP/htdocs/Blinx/upload/".uniqid();
+$extension = split("/", $_FILES['name1']['type'])[1];
+$target_dir = "/Applications/MAMP/htdocs/Blinx/upload/Document".uniqid().".".$extension;
 
     if (move_uploaded_file($_FILES['name1']['tmp_name'], $target_dir)) {
         print "Received {$_FILES['name1']['name']} - its size is {$_FILES['name1']['size']}";
