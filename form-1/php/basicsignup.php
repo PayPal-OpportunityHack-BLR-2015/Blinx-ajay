@@ -17,7 +17,7 @@ $_SESSION['form-password'] = $password;
 $_SESSION['user-type'] = $user_type;
 
 //var_dump($_SESSION);
-$redir_location = 'Location: ../detailreg-user.html';
+$redir_location = 'Location: ../../detailreg-user.php';
 //$redir_location = 'Location: ../dbconnect.php';
 
 header($redir_location);

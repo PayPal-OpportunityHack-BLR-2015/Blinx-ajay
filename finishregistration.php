@@ -7,7 +7,7 @@ $lastName = $_SESSION['form-last-name'];
 $mailId = $_SESSION['form-email'];
 $password = $_SESSION['form-password'];
 //$userName = $_SESSION['form-user-name'];
-printf("uniqid(): %s\r\n", uniqid());
+// printf("uniqid(): %s\r\n", uniqid());
 
 $passwordToStore = md5($password);
 $mobile_number = $_POST['form-mobile-number'];
@@ -28,24 +28,24 @@ $curDate = date("D M d Y G:i");
 
 
 
-var_dump($_FILES);
+// var_dump($_FILES);
 $extension = split("/", $_FILES['profilePic']['type'])[1];
 
 $target_dir_profile = "/Applications/MAMP/htdocs/Blinx/upload/Profile".uniqid().".".$extension;
 
 if(move_uploaded_file($_FILES['profilePic']['tmp_name'], $target_dir_profile)){
-	    print "Received {$_FILES['profilePic']['name']} - its size is {$_FILES['profilePic']['size']}";
+	    // print "Received {$_FILES['profilePic']['name']} - its size is {$_FILES['profilePic']['size']}";
     } else {
-        print "Upload failed!";
+        // print "Upload failed!";
     }
 
 $extension = split("/", $_FILES['name1']['type'])[1];
 $target_dir = "/Applications/MAMP/htdocs/Blinx/upload/Document".uniqid().".".$extension;
 
     if (move_uploaded_file($_FILES['name1']['tmp_name'], $target_dir)) {
-        print "Received {$_FILES['name1']['name']} - its size is {$_FILES['name1']['size']}";
+        // print "Received {$_FILES['name1']['name']} - its size is {$_FILES['name1']['size']}";
     } else {
-        print "Upload failed!";
+        // print "Upload failed!";
     }
 
 
@@ -56,7 +56,7 @@ $sqlQuery = "INSERT INTO `m_user`(`user_id`,`first_name`,`last_name`,`email_id`,
 	('$userId','$firstName','$lastName','$mailId','$mobile_number',
 	$alternative_mobile_number,'$dob','$gender','$qualification','$institution','$occupation','$state','$district','$location','$address','$target_dir','$target_dir_profile','$curDate',
 	'$curDate','C',0,0,'1','$passwordToStore')";
-echo $sqlQuery;
+// echo $sqlQuery;
 mysqli_query($conn,$sqlQuery);
 
 /* commit transaction */
@@ -65,6 +65,9 @@ if (!$mysqli_query->commit()) {
     exit();
 }
 
+$_SESSION['user'] =  $mailId;
+header("Location: form-1/profile.php");
+die();
 ?>
 
 

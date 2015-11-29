@@ -124,7 +124,7 @@ else{
                             </table>
 
                             <form role="form"  method="post" class="registration-form"
-                                  action="php/basicsignup.php">
+                                  action="form-1/php/basicsignup.php">
                                 <div class="form-group">
                                     <label class="sr-only" for="form-first-name">First name</label>
                                     <input type="text" name="form-first-name" placeholder="First name..."

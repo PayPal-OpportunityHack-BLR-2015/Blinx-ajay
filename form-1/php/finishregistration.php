@@ -25,7 +25,7 @@ $curDate = date("D M d, Y G:i");
 
 $sqlQuery = "INSERT INTO `m_user`(`user_id`,`first_name`,`last_name`,`email_id`,`mobile_number`,`alternative_mobile_number`,`date_of_birth`,`gender`,`qualification`,`institution`,`occupation`,`state`,`district`,`location`,`address`,`document_path`,`picture_path`,create_time`,`update_time`,`cud`,`verified`,`m_id`,`verifier_mid`,`pwd`) values ($userId,$firstName,$lastName,$mailId,$mobile_number,$alternative_mobile_number,$dob,$gender,$qualification,$institution,$occupation,$state,$district,$location,$address,$doc,$pic,$curDate,$curDate,'C',0,0,'1',$passwordToStore)";
 mysqli_query($conn,$sqlQuery);
-
+die();
 ?>
 
 
