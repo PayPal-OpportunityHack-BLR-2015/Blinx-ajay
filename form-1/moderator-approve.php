@@ -42,31 +42,6 @@
 </head>
 <body onLoad="initialize()">
 
-<?php
-        session_start();
-        include_once 'php/dbconnect.php';
-         // var_dump($_POST);
-        //$_Zero=0;
-        $query ="SELECT * FROM m_user WHERE verified= 0";
-        //echo $query;    
-
-
-$results=mysqli_query($conn, $query);
-$row_count=mysql_num_rows($results);
-$row_users = mysql_fetch_array($results);
-
-echo "<table>";
-
-while ($row_users = mysql_fetch_array($results)) {
-    //output a row here
-    echo "<tr><td>".($row_users['email_id'])."</td></tr>";
-}
-
-echo "</table>";
-
-
-       
-    ?>
 
 <!-- Top content -->
 <div class="top-content">
@@ -127,12 +102,37 @@ echo "</table>";
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="active">
-                                        <td><a href="#" data-toggle="modal" data-target="#myModal" role="button">Gokul KK</a></td>
-                                        <td>PAN.pdf</td>
-                                        <td>Volunteer</td>
-                                        <td><p><a href="#" class="btn btn-primary" role="button">Approve</a> <a href="#" class="btn btn-default"  data-toggle="modal" data-target="#reasonModal" role="button">Decline</a></p></td>
-                                    </tr>
+
+                                        <?php
+                                                session_start();
+                                                include_once 'php/dbconnect.php';
+                                                 // var_dump($_POST);
+                                                //$_Zero=0;
+                                                $query ="SELECT * FROM m_user WHERE verified= 0";
+                                                //echo $query;    
+
+
+                                        $results=mysqli_query($conn, $query);
+                                        //var_dump($results);
+                                        $row_count=mysqli_num_rows($results);
+                                        //echo $row_count;
+                                        // $row_users = mysqli_fetch_array($results);
+                                        //var_dump($row_users);
+
+                                        // echo "<table>";
+
+                                        while ($row_users = mysqli_fetch_array($results)) {
+                                                //output a row here
+                                                // echo $row_users['email_id'];
+                                                echo '<tr class="active">';
+                                                echo '<td><a href="#" data-toggle="modal" data-target="#myModal" role="button">' . $row_users['first_name'] .'</a></td>';
+                                                echo '<td><a href="' . $row_users['document_path'] . '">Document</a></td>';
+                                                echo '<td>' . $row_users['user_type'] . '</td>';
+                                                echo '<td><p><a href="#" class="btn btn-primary" role="button">Approve</a> <a href="#" class="btn btn-default"  data-toggle="modal" data-target="#reasonModal" role="button">Decline</a></p></td>';
+                                                echo '</tr>';
+                                            }
+                                            ?>
+                                
                                     <!--<tr class="active">
                                         &lt;!&ndash;<td><img src="assets/img/backgrounds/1.jpg" class="img-thumbnail" alt="Cinque Terre" width="200" height="500"></td>&ndash;&gt;
                                         <td><a href="#" data-toggle="modal" data-target="#myModal" role="button">Ajay Bose</a></td>>
