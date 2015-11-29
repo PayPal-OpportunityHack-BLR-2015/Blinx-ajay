@@ -10,20 +10,29 @@ include_once 'dbconnect.php';
 if(isset($_POST['form-username']))
 {
 
- $userName = mysql_real_escape_string($_POST['form-username']);
- $upass = mysql_real_escape_string($_POST['form-password']);
+ $userName = mysql_real_escape_string($_POST["form-username"]);
+ $upass = mysql_real_escape_string($_POST["form-password"]);
 
- echo $userName;
+ // var_dump($_POST);
+ $query ="SELECT * FROM m_user WHERE email_id='".$userName."'";
+ // echo $query;
 
- $res=mysqli_query($conn, "SELECT * FROM m_users WHERE email_id=$userName");
- $row=mysql_fetch_array($res);
- echo $row;
+ // echo $userName;
+ // echo $upass;
+
+
+ $res=mysqli_query($conn, $query);
+ $row=mysqli_fetch_array($res);
+ // var_dump($row);
+ // echo $row['pwd'];
+ // echo $upass;
+ // var_dump($row);
  if(strcmp($row['pwd'], $upass) == 0)
  {
  	$_SESSION['user'] = $row['user_id'];
  	if($row['verified']==1)
  {
-    header("Location: '../verified.html'");
+    header("Location: ../verified.html");
  }
  else{
     header("Location: ../unverified.html");
