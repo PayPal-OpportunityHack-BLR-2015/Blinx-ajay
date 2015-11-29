@@ -24,7 +24,7 @@ session_start();
                         </div>
                         <div class="form-bottom">
                             <form role="form" method="post" class="login-form"
-                                  action="php/finishregistration.php">
+                                  action="finishregistration.php" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label class="sr-only" for="form-mobile-number">Mobile Number</label>
                                     <input type="text" name="form-mobile-number" placeholder="Mobile Number..."
@@ -98,7 +98,7 @@ session_start();
                                    <label class="sr-only" for="form-pic">Document Proof</label>
                                        <h4>Document Proof</h4>
                                      <span class="btn btn-default btn-file">
-                                       Browse <input type="file" id="fileToUpload" name="fileToUpload">
+                                       Browse <input type="file" id="fileToUpload" name="name1">
                                    </span>
                                </div>
                                 <button type="submit" class="btn">Submit</button>

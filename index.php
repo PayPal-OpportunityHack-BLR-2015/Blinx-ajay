@@ -3,7 +3,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 session_start();
 
 //echo 'Hello World, '.$_SESSION['fb_access_token'];
-
+$google_auth_url ='';
+$loginUrl ='';
 if(is_null($_SESSION['fb_access_token'])){
 
         $fb = new Facebook\Facebook([
@@ -79,7 +80,7 @@ else{
                                 <a class="btn btn-link-1 btn-link-1-twitter" href="#">
                                     <i class="fa fa-twitter"></i> Twitter
                                 </a>
-                                <a class="btn btn-link-1 btn-link-1-google-plus" href=?= $google_auth_url?>
+                                <a class="btn btn-link-1 btn-link-1-google-plus" href=<?= $google_auth_url?>
                                     <i class="fa fa-google-plus"></i> Google+
                                 </a>
                             </div>
@@ -158,7 +159,7 @@ else{
                                 <a class="btn btn-link-1 btn-link-1-twitter" href="#">
                                     <i class="fa fa-twitter"></i> Twitter
                                 </a>
-                                <a class="btn btn-link-1 btn-link-1-google-plus" href=?= $google_auth_url?>
+                                <a class="btn btn-link-1 btn-link-1-google-plus" href=<?= $google_auth_url ?>
                                     <i class="fa fa-google-plus"></i> Google Plus
                                 </a>
                             </div>
