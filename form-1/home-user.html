@@ -32,12 +32,47 @@
 
         <style>
             .navbar-brand { font-weight: 700 !important;  font-size: 24px !important; }
+            #custom-search-input{
+            padding: 3px;
+            border: solid 1px #E4E4E4;
+            border-radius: 6px;
+            background-color: #fff;
+            }
+
+            #custom-search-input input{
+            border: 0;
+            box-shadow: none;
+            }
+
+            #custom-search-input button{
+            margin: 2px 0 0 0;
+            background: none;
+            box-shadow: none;
+            border: 0;
+            color: #666666;
+            padding: 0 8px 0 10px;
+            border-left: solid 1px #ccc;
+            }
+
+            #custom-search-input button:hover{
+            border: 0;
+            box-shadow: none;
+            border-left: solid 1px #ccc;
+            }
+
+            #custom-search-input .glyphicon-search{
+            font-size: 23px;
+            }
+
+            .spacer {
+            margin-top: 40px; /* define margin as you see fit */
+            }
         </style>
 
     </head>
 
 
-    <body onload="load_home()">
+    <body onload="load_home() data-spy="scroll" data-target="#menuBar"">
 
         <!-- Top content -->
         <div class="top-content">
@@ -60,7 +95,7 @@
                             <a href="#"><img src="assets/img/blinx_logo2.png" class="img-thumbnail" alt="Blinx" width="120" height="120">
                         </p>
                     </div>
-                    <nav class="navbar navbar-default">
+                    <nav class="navbar navbar-default" id="menuBar">
                         <div class="container-fluid">
                             <div class="navbar-header ">
                              <a class="navbar-brand" href="#"><h4><strong>Home</strong></h4></a>
@@ -68,33 +103,263 @@
                             <div>
                                 <ul class="nav navbar-nav ">
                                    <!-- <li class="active"><a href="profile.html"><h3><strong>Home</strong></h3></a></li>-->
-                                    <li><a href="#"><strong><h4>Request Service</h4></strong></a></li>
-                                    <li><a href="#"><strong><h4>Search Services</h4></strong></a></li>
-                                    <li><a href="#"><strong><h4>Rate the Volunteer</h4></strong></a></li>
-                                    <li><a href="#"><strong><h4>History</h4></strong></a></li>
+                                    <li><a href="#submit-req-div"><strong><h4>Request Service</h4></strong></a></li>
+                                    <li><a href="#rate-volunteer-div"><strong><h4>Rate the Volunteer</h4></strong></a></li>
+                                    <li><a href="#search-services-div"><strong><h4>Service Search</h4></strong></a></li>
+
+                                   <!-- <li><a href="#"><strong><h4>History</h4></strong></a></li>-->
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="profile.php"><strong><h4>My Profile</h4></strong></a></li>
                                     <li><a href="#"><strong><h4>Sign Out</h4></strong>   </a></li>
                                 </ul>
                             </div>
                         </div>
                     </nav>
 
-                   <!-- <div class="container" >-->
-                        <div class="row">
-                        <!--<h3>Profile Details</h3>--><!--
-                            <div class="col-md-12" id="include">
+                   <!-- Request Service Div-->
+                    <div class="row" id="submit-req-div">
 
-                        --></div>
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h2><strong>Request Service</strong></h2>
+                            <!--  <div class="description">
+                                  <p>
+                                      <strong>"Donate Your Eyes While You Are Alive"</strong>
+                                      <a href="#"><img src="assets/img/blinx_logo2.png" class="img-thumbnail" alt="Blinx" width="100" height="100">
+                                  </p>
+                              </div>-->
+                        </div>
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-5">
+                        <form role="form" action="" method="post" class="service-request-form" >
+                            <div class="form-group">
+                                <label class="sr-only" for="form-service-name">Service Name</label>
+                                <!--<input type="text" name="form-username" placeholder="Service Name..." class="form-username form-control" id="form-username">-->
+                                <select class="form-control" class="form-username form-control" id="form-service-name">
+                                    <option>Reading Book</option>
+                                    <option>Travel Help</option>
+                                    <option>Writing Exam</option>
+                                </select>
                             </div>
-                        <p></p>
-                    <!--</div>-->
+                            <div class="form-group">
+                                <label class="sr-only" for="form-dt">Date and Time</label>
+                                <input type="password" name="form-dt" placeholder="Date and Time..." class="form-password form-control form_datetime" id="form-dt">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-loc">Location</label>
+                                <input type="password" name="form-loc" placeholder="Location..." class="form-password form-control" id="form-loc">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-add">Full Address [If different from the profile]</label>
+                                <input type="password" name="form-add" placeholder="Full Address..." class="form-password form-control" id="form-add">
+                            </div>
+                            <button type="submit" class="btn">Submit Request</button>
+                        </form>
+                            </div>
+                    </div>
+
+                    <div class="row spacer">
+                        <div class="span4">...</div>
+                        <div class="span4">...</div>
+                        <div class="span4">...</div>
+                        <div class="span4">...</div>
+                        <div class="span4">...</div>
+                    </div>
+                    <!-- Rate Volunteer-->
+                    <div class="row" id="rate-volunteer-div">
+
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h2><strong>Rate the Volunteer</strong></h2>
+                            <!--  <div class="description">
+                                  <p>
+                                      <strong>"Donate Your Eyes While You Are Alive"</strong>
+                                      <a href="#"><img src="assets/img/blinx_logo2.png" class="img-thumbnail" alt="Blinx" width="100" height="100">
+                                  </p>
+                              </div>-->
+                        </div>
+                        <div class="row spacer">
+                            <div class="span4">...</div>
+                        </div>
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-5">
+                            <form role="form" action="" method="post" class="rate-volunteer-form" >
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                           <!-- <h2>Custom search field</h2>-->
+                                            <div id="custom-search-input">
+                                                <div class="input-group col-md-12">
+                                                    <input type="text" class="form-control input-lg" placeholder="Gokul" />
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-info btn-lg" type="button" onclick="show_list();">
+                                                                <i class="glyphicon glyphicon-search"></i>
+                                                            </button>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row spacer">
+                                    <!--<div class="span4">...</div>-->
+                                </div>
+
+                                <div id="listVolunteer" >
+                                    <div class="col-sm-5">
+                                    <div class="container">
+                                        <div class="col-sm-5">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th><font color="white">FirstName</font></th>
+                                                <th><font color="white">LastName</font></th>
+                                                <th><font color="white">Rating</font></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td><div class="checkbox"> <label> <input type="checkbox"></label> </div></td>
+                                                <td>Gokul</td>
+                                                <td>Krishna</td>
+                                                <td><select class="form-control" class="form-username form-control" id="form-service-name">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                        </div>
+                                        </div>
+                                </div>
+
+                        </div>
+                                <div class="col-sm-12">
+                                <button type="submit" class="btn">Submit Rating</button>
+                                    </div>
+                            </form>
+
+                    </div>
+
+                    <div class="row spacer">
+                        <div class="span4">...</div>
+                        <div class="span4">...</div>
+                        <div class="span4">...</div>
+                        <div class="span4">...</div>
+                        <div class="span4">...</div>
+                    </div>
+                    <div class="row spacer">
+                        <div class="span4">...</div>
+                        <div class="span4">...</div>
+                        <div class="span4">...</div>
+                        <div class="span4">...</div>
+                        <div class="span4">...</div>
+                    </div>
+
+
+                    <!-- Search Services-->
+                    <div class="row" id="search-services-div">
+
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h2><strong>Service Search</strong></h2>
+                            <!--  <div class="description">
+                                  <p>
+                                      <strong>"Donate Your Eyes While You Are Alive"</strong>
+                                      <a href="#"><img src="assets/img/blinx_logo2.png" class="img-thumbnail" alt="Blinx" width="100" height="100">
+                                  </p>
+                              </div>-->
+                        </div>
+                        <div class="row spacer">
+                            <!--<div class="span4">...</div>-->
+                        </div>
+                        <!--<div class="col-sm-1"></div>-->
+                        <div class="col-sm-8 col-sm-offset-3">
+                            <form role="form" action="" method="post" class="rate-volunteer-form" >
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <!-- <h2>Custom search field</h2>-->
+                                            <div id="custom-search-input">
+                                                <div class="input-group col-md-12">
+                                                    <input type="text" class="form-control input-lg" placeholder="Reading Book" />
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-info btn-lg" type="button" onclick="show_list();">
+                                                                <i class="glyphicon glyphicon-search"></i>
+                                                            </button>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row spacer">
+                                    <!--<div class="span4">...</div>-->
+                                </div>
+
+                                <div id="listServices" >
+                                    <div class="col-sm-1">
+                                        <div class="container">
+                                            <div class="col-sm-1">
+                                                <table class="table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th><font color="white">Service Name</font></th>
+                                                        <th><font color="white">Requested By</font></th>
+                                                        <th><font color="white">Date Time</font></th>
+                                                        <th><font color="white">Location</font></th>
+                                                        <th><font color="white">Details</font></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr >
+                                                        <td><div class="checkbox"> <label> <input type="checkbox"></label> </div></td>
+                                                        <td><font color="white">Reading Book</td>
+                                                        <td><font color="white">Aswath</td>
+                                                        <td><font color="white">30/11/2015 16:00</td>
+                                                        <td><font color="white">Koramangala</td>
+                                                        <td><a href="#"><strong><h4>Link</h4></strong></a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div class="checkbox"> <label> <input type="checkbox"></label> </div></td>
+                                                        <td><font color="white">Reading Book</td>
+                                                        <td><font color="white">Vinayak</td>
+                                                        <td><font color="white">10/12/2015 16:00</td>
+                                                        <td><font color="white">MG Road</td>
+                                                        <td><a href="#"><strong><h4>Link</h4></strong></a></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </div>
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn">Show Intrest</button>
+                        </div>
+                        </form>
+
+                    </div>
+
+                    <div class="row spacer">
+                        <div class="span4">...</div>
+                        <div class="span4">...</div>
+                        <div class="span4">...</div>
+                        <div class="span4">...</div>
+                        <div class="span4">...</div>
+                    </div>
 
 
                 </div>
 
         <!-- Footer -->
-        <footer>
+        <!--<footer>
         	<div class="container">
         		<div class="row">
         			
@@ -105,7 +370,7 @@
         			
         		</div>
         	</div>
-        </footer>
+        </footer>-->
 
         <!-- Javascript -->
         <script src="assets/js/jquery-1.11.1.min.js"></script>
@@ -122,6 +387,13 @@
                                  function load_home(){
                     document.getElementById("include").innerHTML='<object type="text/html" data="profile.html" ></object>';
                     }
+
+                                   function show_list(){
+                                   alert(document.getElementById("listVolunteer"));
+                    document.getElementById("listVolunteer").style.display = "inline";
+                    }
+
+                    $(".form-dt").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
         </script>
 
     </body>
