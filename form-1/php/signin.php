@@ -29,10 +29,10 @@ if(isset($_POST['form-username']))
  // var_dump($row);
  if(strcmp($row['pwd'], $upass) == 0)
  {
- 	$_SESSION['user'] = $row['user_id'];
+ 	$_SESSION['user'] = $userName;
  	if($row['verified']==1)
  {
-    header("Location: ../verified.html");
+    header("Location: ../profile.php");
  }
  else{
     header("Location: ../unverified.html");

@@ -33,6 +33,16 @@
 </head>
 <body>
 
+    <?php
+        session_start();
+        include_once 'php/dbconnect.php';
+         // var_dump($_POST);
+        $query ="SELECT * FROM m_user WHERE email_id='".$_SESSION['user']."'";
+        echo $query;    
+        $res=mysqli_query($conn, $query);
+        $row=mysqli_fetch_array($res);
+    ?>
+
 <!-- Top content -->
 <div class="top-content" id="includedContent">
 
@@ -47,55 +57,55 @@
                     <div class="form-box">
                         <div class="form-top">
                             <div class="form-top-left">
-                                <h3>Gokul Krishna Profile Details</h3>
+                                <h3><?php echo $row['first_name'] . ' ' .$row['last_name']; ?> Details</h3>
                             </div>
                         </div>
                         <div class="form-bottom">
                             <table class="table table-striped">
                                 <tbody>
                                 <tr >
-                                    <td><img src="assets/img/backgrounds/1.jpg" class="img-thumbnail" alt="Cinque Terre" width="200" height="500"></td>
-                                    <td>Gokul KK</td>
+                                    <td><img src="<?php echo $row['picture_path'];?>" class="img-thumbnail" alt="Cinque Terre" width="200" height="500"></td>
+                                    <td><?php echo $row['first_name'] . ' ' .$row['last_name'];?></td>
                                 </tr>
                                 <tr >
                                     <td>Mobile Number</td>
-                                    <td>9901245453</td>
+                                    <td><?php echo $row['mobile_number'];?></td>
                                 </tr>
                                 <tr >
                                     <td>Alternate Mobile Number</td>
-                                    <td>9901245453</td>
+                                    <td><?php echo $row['alternative_mobile_number'];?></td>
                                 </tr>
                                 <tr >
                                     <td>Date of Birth</td>
-                                    <td>26/08/1986</td>
+                                    <td><?php echo $row['date_of_birth'];?></td>
                                 </tr>
                                 <tr >
                                     <td>Gender</td>
-                                    <td>Male</td>
+                                    <td><?php echo $row['gender'];?></td>
                                 </tr>
                                 <tr >
                                     <td>Qualification</td>
-                                    <td>B>E</td>
+                                    <td><?php echo $row['qualification'];?></td>
                                 </tr>
                                 <tr >
                                     <td>Institution</td>
-                                    <td>B>E</td>
+                                    <td><?php echo $row['institution'];?></td>
                                 </tr>
                                 <tr >
                                     <td>Occupation</td>
-                                    <td>B>E</td>
+                                    <td><?php echo $row['occupation'];?></td>
                                 </tr>
                                 <tr >
                                     <td>Address</td>
-                                    <td>B>E</td>
+                                    <td><?php echo $row['address'];?></td>
                                 </tr>
                                 <tr >
                                     <td>District</td>
-                                    <td>B>E</td>
+                                    <td><?php echo $row['address'];?></td>
                                 </tr>
                                 <tr >
                                     <td>Geo Location</td>
-                                    <td>B>E</td>
+                                    <td><?php echo $row['location'];?></td>
                                 </tr>
                                 </tbody>
                             </table>
